@@ -1,11 +1,9 @@
 package org.web.dto;
 
 public class Result<T> {
-    private Integer returnCode; //自定義與前端溝通
+    private Integer returnCode; //自定義與前端溝通(包含狀態、想拿取的資料)
 
     private T data;
-
-
 
     public Integer getReturnCode() {
         return returnCode;
