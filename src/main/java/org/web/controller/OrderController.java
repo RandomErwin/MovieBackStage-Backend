@@ -16,6 +16,7 @@ public class OrderController {
 
     @PostMapping("/createOrder")
     public Result createOrder(@RequestBody Orders orders){
+        System.out.println(orders);
         return orderService.createOrder(orders);
     }
     @PutMapping("/updateOder")

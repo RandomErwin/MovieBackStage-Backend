@@ -20,7 +20,7 @@ public class ShowtimeService {
         this.showtimeDao = showtimeDao;
     }
 
-    // Convert Showtimes entity to ShoetimeDTO
+    // Convert Showtimes entity to ShowtimeDTO
     private ShowtimeDto convertShowtimeToDTO(Showtimes showtimes){
         ShowtimeDto dto = new ShowtimeDto();
         dto.setTime(showtimes.getTime());

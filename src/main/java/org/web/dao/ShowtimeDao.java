@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.web.entity.Showtimes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ShowtimeDao extends JpaRepository<Showtimes ,Integer> {

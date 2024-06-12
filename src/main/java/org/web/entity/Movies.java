@@ -15,7 +15,7 @@ public class Movies {
     private Integer movieId;
     private String title;
     private String rating;
-    private Time runtime;
+    private String runtime;
     private String genre;
     private Date releaseDate;
     private String director;
@@ -27,7 +27,7 @@ public class Movies {
     public Movies() {
     }
 
-    public Movies(Integer movieId, String title, String rating, Time runtime, String genre, Date releaseDate, String director, String synopsis, String language, String trailer, String postUrl) {
+    public Movies(Integer movieId, String title, String rating, String runtime, String genre, Date releaseDate, String director, String synopsis, String language, String trailer, String postUrl) {
         this.movieId = movieId;
         this.title = title;
         this.rating = rating;
@@ -65,11 +65,11 @@ public class Movies {
         this.rating = rating;
     }
 
-    public Time getRuntime() {
+    public String getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(Time runtime) {
+    public void setRuntime(String runtime) {
         this.runtime = runtime;
     }
 

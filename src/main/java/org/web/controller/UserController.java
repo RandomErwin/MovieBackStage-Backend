@@ -48,7 +48,6 @@ public class UserController {
 
     @GetMapping("/getAll")
     public Result findAll(){
-
         return userService.findAll();
     }
 
