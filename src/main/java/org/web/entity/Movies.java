@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
 
 @Entity
 public class Movies {
@@ -14,22 +14,25 @@ public class Movies {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer movieId;
     private String title;
+    private String titleEnglish;
     private String rating;
     private String runtime;
     private String genre;
-    private Date releaseDate;
+    private LocalDate releaseDate;
     private String director;
     private String synopsis;
     private String language;
     private String trailer;
-    private String postUrl;
+    private String poster;
+    private Boolean isOutTheater;
 
     public Movies() {
     }
 
-    public Movies(Integer movieId, String title, String rating, String runtime, String genre, Date releaseDate, String director, String synopsis, String language, String trailer, String postUrl) {
+    public Movies(Integer movieId, String title, String titleEnglish, String rating, String runtime, String genre, LocalDate releaseDate, String director, String synopsis, String language, String trailer, String poster, Boolean isOutTheater) {
         this.movieId = movieId;
         this.title = title;
+        this.titleEnglish = titleEnglish;
         this.rating = rating;
         this.runtime = runtime;
         this.genre = genre;
@@ -38,7 +41,8 @@ public class Movies {
         this.synopsis = synopsis;
         this.language = language;
         this.trailer = trailer;
-        this.postUrl = postUrl;
+        this.poster = poster;
+        this.isOutTheater = isOutTheater;
     }
 
     public Integer getMovieId() {
@@ -55,6 +59,14 @@ public class Movies {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTitleEnglish() {
+        return titleEnglish;
+    }
+
+    public void setTitleEnglish(String titleEnglish) {
+        this.titleEnglish = titleEnglish;
     }
 
     public String getRating() {
@@ -81,11 +93,11 @@ public class Movies {
         this.genre = genre;
     }
 
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -121,12 +133,20 @@ public class Movies {
         this.trailer = trailer;
     }
 
-    public String getPostUrl() {
-        return postUrl;
+    public String getPoster() {
+        return poster;
     }
 
-    public void setPostUrl(String postUrl) {
-        this.postUrl = postUrl;
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public Boolean getOutTheater() {
+        return isOutTheater;
+    }
+
+    public void setOutTheater(Boolean outTheater) {
+        isOutTheater = outTheater;
     }
 
     @Override
@@ -134,15 +154,17 @@ public class Movies {
         return "Movies{" +
                 "movieId=" + movieId +
                 ", title='" + title + '\'' +
+                ", titleEnglish='" + titleEnglish + '\'' +
                 ", rating='" + rating + '\'' +
-                ", runtime=" + runtime +
+                ", runtime='" + runtime + '\'' +
                 ", genre='" + genre + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", director='" + director + '\'' +
                 ", synopsis='" + synopsis + '\'' +
                 ", language='" + language + '\'' +
                 ", trailer='" + trailer + '\'' +
-                ", postUrl='" + postUrl + '\'' +
+                ", poster='" + poster + '\'' +
+                ", isOutTheater=" + isOutTheater +
                 '}';
     }
 }

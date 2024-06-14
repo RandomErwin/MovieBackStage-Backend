@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column
@@ -18,12 +18,11 @@ public class Users {
     @Column
     private String account;
     @Column
-    private String passwd ;
+    private String passwd;
     @Column
     private String phone;
     @Column
     private String email ;
-
 
     public Users() {
     }

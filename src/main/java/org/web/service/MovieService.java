@@ -5,6 +5,8 @@ import org.web.dao.MovieDao;
 import org.web.dto.Result;
 import org.web.entity.Movies;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,6 +39,34 @@ public class MovieService {
         }else{
             return new Result(999, "No data");
         }
-
     }
+
+    public Result getMoviesByIsComing(){
+        LocalDate today = LocalDate.now();
+        List<Movies> movies = movieDao.findMoviesByReleaseDateAfter(today);
+        return new Result(200, movies);
+    }
+
+    public Result getMoviesByIsPlaying(){
+        LocalDate today = LocalDate.now();
+        List<Movies> movies = movieDao.findMoviesByReleaseDateBeforeAndIsOutTheaterFalse(today);
+        return new Result(200, movies);
+    }
+
+//    public Result getMoviesByIsPlaying(){
+//        List<Movies> movies = movieDao.findMoviesByIsPlayingTrue();
+//        return new Result(200, movies);
+//    }
+//
+//    public Result getMoviesIsComing(){
+//        LocalDate today = LocalDate.now();
+//        List<Movies> movies = movieDao.findMoviesByReleaseDateAfterAndIsPlayingFalse(today);
+//        return new Result(200, movies);
+//    }
+//
+//    public Result getMoviesIsOutTheater(){
+//        LocalDate today = LocalDate.now();
+//        List<Movies> movies = movieDao.findMoviesByReleaseDateBeforeAndIsPlayingFalse(today);
+//        return new Result(200, movies);
+//    }
 }
