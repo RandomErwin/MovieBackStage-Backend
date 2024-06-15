@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Movies {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer movieId;
+    private Integer id;
     private String title;
     private String titleEnglish;
     private String rating;
@@ -29,8 +29,8 @@ public class Movies {
     public Movies() {
     }
 
-    public Movies(Integer movieId, String title, String titleEnglish, String rating, String runtime, String genre, LocalDate releaseDate, String director, String synopsis, String language, String trailer, String poster, Boolean isOutTheater) {
-        this.movieId = movieId;
+    public Movies(Integer id, String title, String titleEnglish, String rating, String runtime, String genre, LocalDate releaseDate, String director, String synopsis, String language, String trailer, String poster, Boolean isOutTheater) {
+        this.id = id;
         this.title = title;
         this.titleEnglish = titleEnglish;
         this.rating = rating;
@@ -45,12 +45,12 @@ public class Movies {
         this.isOutTheater = isOutTheater;
     }
 
-    public Integer getMovieId() {
-        return movieId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMovieId(Integer movieId) {
-        this.movieId = movieId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -152,7 +152,7 @@ public class Movies {
     @Override
     public String toString() {
         return "Movies{" +
-                "movieId=" + movieId +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", titleEnglish='" + titleEnglish + '\'' +
                 ", rating='" + rating + '\'' +

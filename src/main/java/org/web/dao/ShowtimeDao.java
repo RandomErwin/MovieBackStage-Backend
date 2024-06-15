@@ -15,7 +15,8 @@ public interface ShowtimeDao extends JpaRepository<Showtimes ,Integer> {
     List<Showtimes> findByMovieId(Integer movieId);
 //    Optional<Showtimes> findByMovieId(Integer movieId); (X)
 
-    @Query("SELECT s FROM Showtimes s WHERE s.screen.theater.id = :theaterId")
-    List<Showtimes> findShowtimesByTheaterId(@Param("theaterId") Integer theaterId);
+    // 想從某一影城得知電影時刻表
+//    @Query("SELECT s FROM Showtimes s WHERE s.screen.theater.id = :theaterId")
+//    List<Showtimes> findShowtimesByTheaterId(@Param("theaterId") Integer theaterId);
 
 }

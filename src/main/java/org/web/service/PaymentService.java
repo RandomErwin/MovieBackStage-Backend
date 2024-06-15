@@ -32,8 +32,8 @@ public class PaymentService {
         return new Result(200, payments);
     }
 
-    public Result getPaymentByOrderNum(String orderNum){
-        List<Payments> list = paymentsDao.findByOrderNum(orderNum);
-        return new Result(200, list);
-    }
+//    public Result getPaymentByOrderNum(String orderNum){
+//        List<Payments> list = paymentsDao.findByOrderNum(orderNum);
+//        return new Result(200, list);
+//    }
 }

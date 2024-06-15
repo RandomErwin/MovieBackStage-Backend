@@ -9,36 +9,33 @@ public class Payments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer paymentId;
+    private Integer id;
     private String payway;
     private String payStatus;
     private Date payTime;
     private String method;
     private Date modifyTime;
-
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-    private Orders orders;
+    private Integer orderId;
 
     public Payments() {
     }
 
-    public Payments(Integer paymentId, String payway, String payStatus, Date payTime, String method, Date modifyTime, Orders orders) {
-        this.paymentId = paymentId;
+    public Payments(Integer id, String payway, String payStatus, Date payTime, String method, Date modifyTime, Integer orderId) {
+        this.id = id;
         this.payway = payway;
         this.payStatus = payStatus;
         this.payTime = payTime;
         this.method = method;
         this.modifyTime = modifyTime;
-        this.orders = orders;
+        this.orderId = orderId;
     }
 
-    public Integer getPaymentId() {
-        return paymentId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPaymentId(Integer paymentId) {
-        this.paymentId = paymentId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPayway() {
@@ -81,24 +78,24 @@ public class Payments {
         this.modifyTime = modifyTime;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     @Override
     public String toString() {
         return "Payments{" +
-                "paymentId=" + paymentId +
+                "id=" + id +
                 ", payway='" + payway + '\'' +
                 ", payStatus='" + payStatus + '\'' +
                 ", payTime=" + payTime +
                 ", method='" + method + '\'' +
                 ", modifyTime=" + modifyTime +
-                ", orders=" + orders +
+                ", orderId=" + orderId +
                 '}';
     }
 }

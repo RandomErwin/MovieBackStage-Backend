@@ -1,9 +1,12 @@
 package org.web.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.web.dto.BonusDto;
 import org.web.dto.Result;
 import org.web.entity.Bonus;
 import org.web.service.BonusService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/bonus")
@@ -13,6 +16,11 @@ public class BonusController {
 
     public BonusController(BonusService bonusService) {
         this.bonusService = bonusService;
+    }
+
+    @GetMapping("/joinTable")
+    public List<BonusDto> getBonus(){
+        return bonusService.getBonus();
     }
 
     @PostMapping("/createBonus")
@@ -30,9 +38,9 @@ public class BonusController {
         return bonusService.getAll();
     }
 
-    // 注意：要加 @PathVariable
-    @GetMapping("/getBonus/{phone}")
-    public Result getBonusByPhone(@PathVariable String phone){
-        return bonusService.getBonusByPhone(phone);
-    }
+//    // 注意：要加 @PathVariable
+//    @GetMapping("/getBonus/{phone}")
+//    public Result getBonusByPhone(@PathVariable String phone){
+//        return bonusService.getBonusByPhone(phone);
+//    }
 }

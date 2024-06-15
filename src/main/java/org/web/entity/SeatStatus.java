@@ -7,67 +7,63 @@ public class SeatStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer seatStatusId;
+    private Integer id;
 
-    private Boolean status;
+    private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "seatId")
-    private Seat seat;
+    private Integer seatId;
 
-    @ManyToOne
-    @JoinColumn(name = "showtimeId")
-    private Showtimes showtimes;
+    private Integer showtimeId;
 
     public SeatStatus() {
     }
 
-    public SeatStatus(Integer seatStatusId, Boolean status, Seat seat, Showtimes showtimes) {
-        this.seatStatusId = seatStatusId;
+    public SeatStatus(Integer id, String status, Integer seatId, Integer showtimeId) {
+        this.id = id;
         this.status = status;
-        this.seat = seat;
-        this.showtimes = showtimes;
+        this.seatId = seatId;
+        this.showtimeId = showtimeId;
     }
 
-    public Integer getSeatStatusId() {
-        return seatStatusId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setSeatStatusId(Integer seatStatusId) {
-        this.seatStatusId = seatStatusId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Seat getSeat() {
-        return seat;
+    public Integer getSeatId() {
+        return seatId;
     }
 
-    public void setSeat(Seat seat) {
-        this.seat = seat;
+    public void setSeatId(Integer seatId) {
+        this.seatId = seatId;
     }
 
-    public Showtimes getShowtimes() {
-        return showtimes;
+    public Integer getShowtimeId() {
+        return showtimeId;
     }
 
-    public void setShowtimes(Showtimes showtimes) {
-        this.showtimes = showtimes;
+    public void setShowtimeId(Integer showtimeId) {
+        this.showtimeId = showtimeId;
     }
 
     @Override
     public String toString() {
         return "SeatStatus{" +
-                "seatStatusId=" + seatStatusId +
+                "id=" + id +
                 ", status=" + status +
-                ", seat=" + seat +
-                ", showtimes=" + showtimes +
+                ", seatId=" + seatId +
+                ", showtimeId=" + showtimeId +
                 '}';
     }
 }

@@ -11,7 +11,7 @@ public class Screen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer screenId;
+    private Integer id;
     private String screenName;
     private String screenClass;
     private Integer totalRow;
@@ -20,27 +20,23 @@ public class Screen {
     @JoinColumn(name = "theaterId")
     private Theater theater;
 
-    @OneToMany(mappedBy = "screen", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    private List<Showtimes> showtimes;
-
     public Screen() {
     }
 
-    public Screen(Integer screenId, String screenName, String screenClass, Integer totalRow, Theater theater, List<Showtimes> showtimes) {
-        this.screenId = screenId;
+    public Screen(Integer id, String screenName, String screenClass, Integer totalRow, Theater theater) {
+        this.id = id;
         this.screenName = screenName;
         this.screenClass = screenClass;
         this.totalRow = totalRow;
         this.theater = theater;
-        this.showtimes = showtimes;
     }
 
-    public Integer getScreenId() {
-        return screenId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setScreenId(Integer screenId) {
-        this.screenId = screenId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getScreenName() {
@@ -75,23 +71,14 @@ public class Screen {
         this.theater = theater;
     }
 
-    public List<Showtimes> getShowtimes() {
-        return showtimes;
-    }
-
-    public void setShowtimes(List<Showtimes> showtimes) {
-        this.showtimes = showtimes;
-    }
-
     @Override
     public String toString() {
         return "Screen{" +
-                "screenId=" + screenId +
+                "id=" + id +
                 ", screenName='" + screenName + '\'' +
                 ", screenClass='" + screenClass + '\'' +
                 ", totalRow=" + totalRow +
                 ", theater=" + theater +
-                ", showtimes=" + showtimes +
                 '}';
     }
 }

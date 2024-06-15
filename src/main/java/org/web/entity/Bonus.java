@@ -9,30 +9,27 @@ public class Bonus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer bonusId;
+    private Integer id;
     private Integer bonus;
     private LocalDateTime modifyTime;
-
-    @ManyToOne
-    @JoinColumn(name = "paymentId")
-    private Payments payments;
+    private Integer paymentId;
 
     public Bonus() {
     }
 
-    public Bonus(Integer bonusId, Integer bonus, LocalDateTime modifyTime, Payments payments) {
-        this.bonusId = bonusId;
+    public Bonus(Integer id, Integer bonus, LocalDateTime modifyTime, Integer paymentId) {
+        this.id = id;
         this.bonus = bonus;
         this.modifyTime = modifyTime;
-        this.payments = payments;
+        this.paymentId = paymentId;
     }
 
-    public Integer getBonusId() {
-        return bonusId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBonusId(Integer bonusId) {
-        this.bonusId = bonusId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getBonus() {
@@ -51,21 +48,21 @@ public class Bonus {
         this.modifyTime = modifyTime;
     }
 
-    public Payments getPayments() {
-        return payments;
+    public Integer getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayments(Payments payments) {
-        this.payments = payments;
+    public void setPaymentId(Integer paymentId) {
+        this.paymentId = paymentId;
     }
 
     @Override
     public String toString() {
         return "Bonus{" +
-                "bonusId=" + bonusId +
+                "id=" + id +
                 ", bonus=" + bonus +
                 ", modifyTime=" + modifyTime +
-                ", payments=" + payments +
+                ", paymentId=" + paymentId +
                 '}';
     }
 }

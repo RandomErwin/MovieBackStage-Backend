@@ -18,10 +18,11 @@ public class ShowtimeController {
         this.showtimeService = showtimeService;
     }
 
-    @GetMapping("/theater/{theaterId}")
-    public List<ShowtimeDto> getShowtimesByTheaterId(@PathVariable Integer theaterId){
-        return showtimeService.getShowtimesByTheaterId(theaterId);
-    }
+    // showtime => screen => theater
+//    @GetMapping("/theater/{theaterId}")
+//    public List<ShowtimeDto> getShowtimesByTheaterId(@PathVariable Integer theaterId){
+//        return showtimeService.getShowtimesByTheaterId(theaterId);
+//    }
 
     @PostMapping("/createShowtime")
     public Result createShowtime(@RequestBody Showtimes showtimes){

@@ -3,12 +3,13 @@ package org.web.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderId;
+    private Integer id;
     private String orderNum;
     private LocalDateTime orderDate;
     private Integer totalAmount;
@@ -21,8 +22,8 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(Integer orderId, String orderNum, LocalDateTime orderDate, Integer totalAmount, String qrcode, Users users) {
-        this.orderId = orderId;
+    public Orders(Integer id, String orderNum, LocalDateTime orderDate, Integer totalAmount, String qrcode, Users users) {
+        this.id = id;
         this.orderNum = orderNum;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
@@ -30,12 +31,12 @@ public class Orders {
         this.users = users;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getOrderNum() {
@@ -81,7 +82,7 @@ public class Orders {
     @Override
     public String toString() {
         return "Orders{" +
-                "orderId=" + orderId +
+                "id=" + id +
                 ", orderNum='" + orderNum + '\'' +
                 ", orderDate=" + orderDate +
                 ", totalAmount=" + totalAmount +

@@ -20,31 +20,35 @@ public class ShowtimeService {
         this.showtimeDao = showtimeDao;
     }
 
+    // 在 showtime 裡不需要在 set showtimeId => 目的是要給 screen 使用 => showtime 已經擁有id
     // Convert Showtimes entity to ShowtimeDTO
-    private ShowtimeDto convertShowtimeToDTO(Showtimes showtimes){
-        ShowtimeDto dto = new ShowtimeDto();
-        dto.setTime(showtimes.getTime());
-        dto.setDate(showtimes.getDate());
-        dto.setMovieId(showtimes.getMovieId());
-        return dto;
-    }
+//    private ShowtimeDto convertShowtimeToDTO(Showtimes showtimes){
+//        ShowtimeDto dto = new ShowtimeDto();
+//        dto.setTime(showtimes.getTime());
+//        dto.setDate(showtimes.getDate());
+//        dto.setMovieId(showtimes.getMovieId());
+//        return dto;
+//    }
 
+    // 在 ShowtimeService 製作 ScreenDto (包含 Showtimes 物件)
     // Convert Screen entity to ScreenDTO
-    private ScreenDto convertScreenToDTO(Screen screen){
-        ScreenDto dto = new ScreenDto();
-        dto.setScreenId(screen.getScreenId());
-        dto.setScreenName(screen.getScreenName());
-        dto.setScreenClass(screen.getScreenClass());
-        dto.setTotalRow(screen.getTotalRow());
-        dto.setShowtimes(screen.getShowtimes().stream().map(this::convertShowtimeToDTO).collect(Collectors.toList()));
-        return dto;
-    }
+    // 由於在 showtime Entity 裡加入 screen Entity 並且 @ManyToOne
+//    private ScreenDto convertScreenToDTO(Screen screen){
+//        ScreenDto dto = new ScreenDto();
+//        dto.setScreenId(screen.getId());
+//        dto.setScreenName(screen.getScreenName());
+//        dto.setScreenClass(screen.getScreenClass());
+//        dto.setTotalRow(screen.getTotalRow());
+//        dto.setShowtimes(screen.getShowtimes().stream().map(this::convertShowtimeToDTO).collect(Collectors.toList()));
+//        return dto;
+//    }
 
+    // 藉由某一影城取得時刻表
     // Retrieve showtimes by theater ID and convert them to DTOs
-    public List<ShowtimeDto> getShowtimesByTheaterId(Integer theaterId){
-        List<Showtimes> showtimes = showtimeDao.findShowtimesByTheaterId(theaterId);
-        return showtimes.stream().map(this::convertShowtimeToDTO).collect(Collectors.toList());
-    }
+//    public List<ShowtimeDto> getShowtimesByTheaterId(Integer theaterId){
+//        List<Showtimes> showtimes = showtimeDao.findShowtimesByTheaterId(theaterId);
+//        return showtimes.stream().map(this::convertShowtimeToDTO).collect(Collectors.toList());
+//    }
 
     public Result createShowtime(Showtimes showtimes){
         showtimeDao.save(showtimes);

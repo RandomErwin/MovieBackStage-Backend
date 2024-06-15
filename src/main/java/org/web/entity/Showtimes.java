@@ -9,33 +9,28 @@ import java.sql.Time;
 public class Showtimes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer showtimeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private Integer movieId;
     private Time time;
     private Date date;
 
-    @ManyToOne
-    @JoinColumn(name = "screenId")
-    private Screen screen;
-
     public Showtimes() {
     }
 
-    public Showtimes(Integer showtimeId, Integer movieId, Time time, Date date, Screen screen) {
-        this.showtimeId = showtimeId;
+    public Showtimes(Integer id, Integer movieId, Time time, Date date) {
+        this.id = id;
         this.movieId = movieId;
         this.time = time;
         this.date = date;
-        this.screen = screen;
     }
 
-    public Integer getShowtimeId() {
-        return showtimeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setShowtimeId(Integer showtimeId) {
-        this.showtimeId = showtimeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getMovieId() {
@@ -62,22 +57,13 @@ public class Showtimes {
         this.date = date;
     }
 
-    public Screen getScreen() {
-        return screen;
-    }
-
-    public void setScreen(Screen screen) {
-        this.screen = screen;
-    }
-
     @Override
     public String toString() {
         return "Showtimes{" +
-                "showtimeId=" + showtimeId +
+                "id=" + id +
                 ", movieId=" + movieId +
                 ", time=" + time +
                 ", date=" + date +
-                ", screen=" + screen +
                 '}';
     }
 }

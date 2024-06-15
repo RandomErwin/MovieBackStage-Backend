@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface PaymentsDao extends JpaRepository<Payments, Integer> {
 
-    @Query("SELECT p FROM Payments p WHERE p.orders.orderNum =: orderNum")
-    List<Payments> findByOrderNum (@Param("orderNum") String orderNum);
+//    @Query("SELECT p FROM Payments p WHERE p.orders.orderNum =: orderNum")
+//    List<Payments> findByOrderNum (@Param("orderNum") String orderNum);
 }

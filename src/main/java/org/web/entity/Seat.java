@@ -7,7 +7,7 @@ public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer seatId;
+    private Integer id;
 
     private Integer rowNumber;
     private Integer seatNumber;
@@ -21,8 +21,8 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(Integer seatId, Integer rowNumber, Integer seatNumber, String seatNote, Boolean isAisle, Screen screen) {
-        this.seatId = seatId;
+    public Seat(Integer id, Integer rowNumber, Integer seatNumber, String seatNote, Boolean isAisle, Screen screen) {
+        this.id = id;
         this.rowNumber = rowNumber;
         this.seatNumber = seatNumber;
         this.seatNote = seatNote;
@@ -30,12 +30,12 @@ public class Seat {
         this.screen = screen;
     }
 
-    public Integer getSeatId() {
-        return seatId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setSeatId(Integer seatId) {
-        this.seatId = seatId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getRowNumber() {
@@ -81,7 +81,7 @@ public class Seat {
     @Override
     public String toString() {
         return "Seat{" +
-                "seatId=" + seatId +
+                "id=" + id +
                 ", rowNumber=" + rowNumber +
                 ", seatNumber=" + seatNumber +
                 ", seatNote='" + seatNote + '\'' +

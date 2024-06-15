@@ -92,6 +92,7 @@ public class UserForm {
         return false;
     }
 
+    // 回傳 users 物件
     // UserForm method: convertToUser()
     public Users convertToUser(){
         Users users = new UserFormConvert().convert(this);

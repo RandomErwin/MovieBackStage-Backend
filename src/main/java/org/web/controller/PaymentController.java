@@ -31,8 +31,8 @@ public class PaymentController {
         return paymentService.findAll();
     }
 
-    @GetMapping("/getPayment/{orderNum}")
-    public Result getPaymentByOrderNum(@PathVariable String orderNum){
-        return paymentService.getPaymentByOrderNum(orderNum);
-    }
+//    @GetMapping("/getPayment/{orderNum}")
+//    public Result getPaymentByOrderNum(@PathVariable String orderNum){
+//        return paymentService.getPaymentByOrderNum(orderNum);
+//    }
 }
