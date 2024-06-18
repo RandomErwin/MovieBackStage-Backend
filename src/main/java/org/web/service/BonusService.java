@@ -1,6 +1,5 @@
 package org.web.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web.dao.BonusDao;
 import org.web.dto.BonusDto;
@@ -19,43 +18,60 @@ public class BonusService {
         this.bonusDao = bonusDao;
     }
 
-    public List<BonusDto> getBonus(){
-        List<Object[]> results = bonusDao.findBonus();
+    public List<BonusDto> getByOrderNum(String num){
+        List<Object[]> results = bonusDao.findByOrderNum(num);
         List<BonusDto> bonusDtos = new ArrayList<>();
 
         for(Object[] result : results){
             Bonus bonus = (Bonus) result[0];
-            Payments payments = (Payments) result[1];
-            Orders orders = (Orders) result[2];
-            Tickets tickets = (Tickets) result[3];
-            TicketType ticketType = (TicketType) result[4];
-            SeatStatus seatStatus = (SeatStatus) result[5];
-            Seat seat = (Seat) result[6];
-            Showtimes showtimes = (Showtimes) result[7];
-            Movies movies = (Movies) result[8];
+            Payments payway = (Payments) result[1];
+            Payments payStatus = (Payments) result[1];
+            Payments modifyTime = (Payments) result[1];
+            Payments payTime = (Payments) result[1];
+            Orders orderNum = (Orders) result[2];
+            Orders totalAmount = (Orders) result[2];
+            Orders qrcode = (Orders) result[2];
+            Users userName = (Users) result[3];
+            Tickets ticketId = (Tickets) result[4];
+            TicketType ticketType = (TicketType) result[5];
+            TicketType uniPrice = (TicketType) result[5];
+            Seat seatNote = (Seat) result[7];
+            Seat rowNumber = (Seat) result[7];
+            Seat seatNumber = (Seat) result[7];
+            Showtimes showtime = (Showtimes) result[8];
+            Movies title = (Movies) result[9];
 
-            BonusDto bonusDto = convertToBonusDto(bonus, payments, orders, tickets, ticketType, seatStatus, seat, showtimes, movies);
+            BonusDto bonusDto = convertToBonusDto(bonus, payway, payStatus, modifyTime, payTime,
+                                                    orderNum, totalAmount, qrcode, userName,
+                                                    ticketId, ticketType, uniPrice, seatNote,
+                                                    rowNumber, seatNumber, showtime, title);
             bonusDtos.add(bonusDto);
-
-            System.out.println("Bonus: " + result);
         }
         return bonusDtos;
     }
 
-    private BonusDto convertToBonusDto(Bonus bonus, Payments payments,
-                                       Orders orders, Tickets tickets,
-                                       TicketType ticketType, SeatStatus seatStatus,
-                                       Seat seat, Showtimes showtimes ,Movies movies){
+    private BonusDto convertToBonusDto(Bonus bonus, Payments payway, Payments payStatus, Payments modifyTime, Payments payTime,
+                                       Orders orderNum, Orders totalAmount, Orders qrcode, Users userName,
+                                       Tickets ticketId, TicketType ticketType, TicketType uniPrice, Seat seatNote,
+                                       Seat rowNumber, Seat seatNumber, Showtimes showtime, Movies title){
         BonusDto dto = new BonusDto();
-        dto.setBonusId(bonus.getId());
-        dto.setPaymentId(payments.getId());
-        dto.setOrderId(orders.getId());
-        dto.setTicketId(tickets.getId());
-        dto.setTicketTypeId(ticketType.getId());
-        dto.setSeatStatusId(seatStatus.getId());
-        dto.setSeatId(seat.getId());
-        dto.setShowtimeId(showtimes.getId());
-        dto.setMovieId(movies.getId());
+        dto.setBonus(bonus.getBonus());
+        dto.setPayway(payway.getPayway());
+        dto.setPayStatus(payStatus.getPayStatus());
+        dto.setModifyTime(modifyTime.getModifyTime());
+        dto.setPayTime(payTime.getPayTime());
+        dto.setOrderNum(orderNum.getOrderNum());
+        dto.setTotalAmount(totalAmount.getTotalAmount());
+        dto.setQrcode(qrcode.getQrcode());
+        dto.setUserName(userName.getUserName());
+        dto.setTicketId(ticketId.getId());
+        dto.setTicketType(ticketType.getTicketType());
+        dto.setUniPrice(uniPrice.getUnitPrice());
+        dto.setSeatNote(seatNote.getSeatNote());
+        dto.setRowNumber(rowNumber.getRowNumber());
+        dto.setSeatNumber(seatNumber.getSeatNumber());
+        dto.setShowtime(showtime.getShowTime());
+        dto.setTitle(title.getTitle());
 
         return dto;
     }

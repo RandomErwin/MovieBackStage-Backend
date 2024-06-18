@@ -1,9 +1,8 @@
 package org.web.dto;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
-public class BonusDto {
+public class OrderDto {
     private String orderNum;
     private String userName;
     private Integer totalAmount;

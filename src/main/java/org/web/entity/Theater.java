@@ -9,7 +9,7 @@ import java.util.List;
 public class Theater {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer theaterId;
     private String theaterName;
     private String area;

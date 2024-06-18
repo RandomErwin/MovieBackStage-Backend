@@ -1,9 +1,12 @@
 package org.web.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.web.dto.PaymentDto;
 import org.web.dto.Result;
 import org.web.entity.Payments;
 import org.web.service.PaymentService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/payments")
@@ -31,8 +34,9 @@ public class PaymentController {
         return paymentService.findAll();
     }
 
-//    @GetMapping("/getPayment/{orderNum}")
-//    public Result getPaymentByOrderNum(@PathVariable String orderNum){
-//        return paymentService.getPaymentByOrderNum(orderNum);
-//    }
+    @GetMapping("/getPayment/{method}")
+    public List<PaymentDto>getMethod(@PathVariable String  method){
+        return paymentService.getByMethod(method);
+    }
+
 }

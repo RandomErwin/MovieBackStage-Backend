@@ -1,55 +1,51 @@
 package org.web.entity;
 
-
-import com.mysql.cj.jdbc.Blob;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
 
 @Entity
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Integer id;
 
-    @Column
-    private String image;
-    @Column
     private String account;
-    @Column
     private String passwd;
-    @Column
+    private String userName;
+    private String nickName;
+    private Date birthday;
     private String phone;
-    @Column
-    private String email ;
+    private String email;
+    private String photo;
+    private String barcode;
+    private String gender;
+    private String address;
 
     public Users() {
     }
 
-    public Users(Integer userId, String image, String account, String passwd, String phone, String email) {
-        this.userId = userId;
-        this.image = image;
+    public Users(Integer id, String account, String passwd, String userName, String nickName, Date birthday, String phone, String email, String photo, String barcode, String gender, String address) {
+        this.id = id;
         this.account = account;
         this.passwd = passwd;
+        this.userName = userName;
+        this.nickName = nickName;
+        this.birthday = birthday;
         this.phone = phone;
         this.email = email;
+        this.photo = photo;
+        this.barcode = barcode;
+        this.gender = gender;
+        this.address = address;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccount() {
@@ -68,6 +64,30 @@ public class Users {
         this.passwd = passwd;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -84,15 +104,53 @@ public class Users {
         this.email = email;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Users{" +
-                "userId=" + userId +
-                ", image=" + image +
+                "id=" + id +
                 ", account='" + account + '\'' +
                 ", passwd='" + passwd + '\'' +
+                ", userName='" + userName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", birthday=" + birthday +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", photo='" + photo + '\'' +
+                ", barcode='" + barcode + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

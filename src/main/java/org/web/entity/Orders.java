@@ -14,21 +14,18 @@ public class Orders {
     private LocalDateTime orderDate;
     private Integer totalAmount;
     private String qrcode;
-
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private Users users;
+    private Integer userId;
 
     public Orders() {
     }
 
-    public Orders(Integer id, String orderNum, LocalDateTime orderDate, Integer totalAmount, String qrcode, Users users) {
+    public Orders(Integer id, String orderNum, LocalDateTime orderDate, Integer totalAmount, String qrcode, Integer userId) {
         this.id = id;
         this.orderNum = orderNum;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
         this.qrcode = qrcode;
-        this.users = users;
+        this.userId = userId;
     }
 
     public Integer getId() {
@@ -71,12 +68,12 @@ public class Orders {
         this.qrcode = qrcode;
     }
 
-    public Users getUsers() {
-        return users;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -87,7 +84,7 @@ public class Orders {
                 ", orderDate=" + orderDate +
                 ", totalAmount=" + totalAmount +
                 ", qrcode='" + qrcode + '\'' +
-                ", users=" + users +
+                ", userId=" + userId +
                 '}';
     }
 }

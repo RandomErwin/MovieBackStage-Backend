@@ -2,6 +2,7 @@ package org.web.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -12,15 +13,15 @@ public class Payments {
     private Integer id;
     private String payway;
     private String payStatus;
-    private Date payTime;
+    private LocalDateTime payTime;
     private String method;
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
     private Integer orderId;
 
     public Payments() {
     }
 
-    public Payments(Integer id, String payway, String payStatus, Date payTime, String method, Date modifyTime, Integer orderId) {
+    public Payments(Integer id, String payway, String payStatus, LocalDateTime payTime, String method, LocalDateTime modifyTime, Integer orderId) {
         this.id = id;
         this.payway = payway;
         this.payStatus = payStatus;
@@ -54,11 +55,11 @@ public class Payments {
         this.payStatus = payStatus;
     }
 
-    public Date getPayTime() {
+    public LocalDateTime getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(Date payTime) {
+    public void setPayTime(LocalDateTime payTime) {
         this.payTime = payTime;
     }
 
@@ -70,11 +71,11 @@ public class Payments {
         this.method = method;
     }
 
-    public Date getModifyTime() {
+    public LocalDateTime getModifyTime() {
         return modifyTime;
     }
 
-    public void setModifyTime(Date modifyTime) {
+    public void setModifyTime(LocalDateTime modifyTime) {
         this.modifyTime = modifyTime;
     }
 

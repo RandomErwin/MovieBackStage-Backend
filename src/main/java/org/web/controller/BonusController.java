@@ -18,9 +18,9 @@ public class BonusController {
         this.bonusService = bonusService;
     }
 
-    @GetMapping("/joinTable")
-    public List<BonusDto> getBonus(){
-        return bonusService.getBonus();
+    @GetMapping("/getBonus/{num}")
+    public List<BonusDto>getByOrderNum(@PathVariable String num){
+        return bonusService.getByOrderNum(num);
     }
 
     @PostMapping("/createBonus")

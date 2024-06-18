@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 public class Showtimes {
@@ -12,17 +13,15 @@ public class Showtimes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer movieId;
-    private Time time;
-    private Date date;
+    private LocalDateTime showTime;
 
     public Showtimes() {
     }
 
-    public Showtimes(Integer id, Integer movieId, Time time, Date date) {
+    public Showtimes(Integer id, Integer movieId, LocalDateTime showTime) {
         this.id = id;
         this.movieId = movieId;
-        this.time = time;
-        this.date = date;
+        this.showTime = showTime;
     }
 
     public Integer getId() {
@@ -41,20 +40,12 @@ public class Showtimes {
         this.movieId = movieId;
     }
 
-    public Time getTime() {
-        return time;
+    public LocalDateTime getShowTime() {
+        return showTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setShowTime(LocalDateTime showTime) {
+        this.showTime = showTime;
     }
 
     @Override
@@ -62,8 +53,7 @@ public class Showtimes {
         return "Showtimes{" +
                 "id=" + id +
                 ", movieId=" + movieId +
-                ", time=" + time +
-                ", date=" + date +
+                ", showTime=" + showTime +
                 '}';
     }
 }
