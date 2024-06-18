@@ -18,8 +18,8 @@ public class BonusService {
         this.bonusDao = bonusDao;
     }
 
-    public List<BonusDto> getByOrderNum(String num){
-        List<Object[]> results = bonusDao.findByOrderNum(num);
+    public List<BonusDto> getBonus(){
+        List<Object[]> results = bonusDao.findBonus();
         List<BonusDto> bonusDtos = new ArrayList<>();
 
         for(Object[] result : results){
@@ -32,28 +32,16 @@ public class BonusService {
             Orders totalAmount = (Orders) result[2];
             Orders qrcode = (Orders) result[2];
             Users userName = (Users) result[3];
-            Tickets ticketId = (Tickets) result[4];
-            TicketType ticketType = (TicketType) result[5];
-            TicketType uniPrice = (TicketType) result[5];
-            Seat seatNote = (Seat) result[7];
-            Seat rowNumber = (Seat) result[7];
-            Seat seatNumber = (Seat) result[7];
-            Showtimes showtime = (Showtimes) result[8];
-            Movies title = (Movies) result[9];
 
             BonusDto bonusDto = convertToBonusDto(bonus, payway, payStatus, modifyTime, payTime,
-                                                    orderNum, totalAmount, qrcode, userName,
-                                                    ticketId, ticketType, uniPrice, seatNote,
-                                                    rowNumber, seatNumber, showtime, title);
+                                                    orderNum, totalAmount, qrcode, userName);
             bonusDtos.add(bonusDto);
         }
         return bonusDtos;
     }
 
     private BonusDto convertToBonusDto(Bonus bonus, Payments payway, Payments payStatus, Payments modifyTime, Payments payTime,
-                                       Orders orderNum, Orders totalAmount, Orders qrcode, Users userName,
-                                       Tickets ticketId, TicketType ticketType, TicketType uniPrice, Seat seatNote,
-                                       Seat rowNumber, Seat seatNumber, Showtimes showtime, Movies title){
+                                       Orders orderNum, Orders totalAmount, Orders qrcode, Users userName){
         BonusDto dto = new BonusDto();
         dto.setBonus(bonus.getBonus());
         dto.setPayway(payway.getPayway());
@@ -64,15 +52,6 @@ public class BonusService {
         dto.setTotalAmount(totalAmount.getTotalAmount());
         dto.setQrcode(qrcode.getQrcode());
         dto.setUserName(userName.getUserName());
-        dto.setTicketId(ticketId.getId());
-        dto.setTicketType(ticketType.getTicketType());
-        dto.setUniPrice(uniPrice.getUnitPrice());
-        dto.setSeatNote(seatNote.getSeatNote());
-        dto.setRowNumber(rowNumber.getRowNumber());
-        dto.setSeatNumber(seatNumber.getSeatNumber());
-        dto.setShowtime(showtime.getShowTime());
-        dto.setTitle(title.getTitle());
-
         return dto;
     }
 

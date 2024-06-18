@@ -12,14 +12,6 @@ public class BonusDto {
     private String payStatus;
     private LocalDateTime payTime;
     private String qrcode;
-    private String title;
-    private LocalDateTime showtime;
-    private Integer ticketId;
-    private String ticketType;
-    private String seatNote;
-    private Integer rowNumber;
-    private Integer seatNumber;
-    private Integer uniPrice;
     private LocalDateTime modifyTime;
 
     public String getOrderNum() {
@@ -84,70 +76,6 @@ public class BonusDto {
 
     public void setQrcode(String qrcode) {
         this.qrcode = qrcode;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public LocalDateTime getShowtime() {
-        return showtime;
-    }
-
-    public void setShowtime(LocalDateTime showtime) {
-        this.showtime = showtime;
-    }
-
-    public Integer getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(Integer ticketId) {
-        this.ticketId = ticketId;
-    }
-
-    public String getTicketType() {
-        return ticketType;
-    }
-
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
-    }
-
-    public String getSeatNote() {
-        return seatNote;
-    }
-
-    public void setSeatNote(String seatNote) {
-        this.seatNote = seatNote;
-    }
-
-    public Integer getRowNumber() {
-        return rowNumber;
-    }
-
-    public void setRowNumber(Integer rowNumber) {
-        this.rowNumber = rowNumber;
-    }
-
-    public Integer getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(Integer seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public Integer getUniPrice() {
-        return uniPrice;
-    }
-
-    public void setUniPrice(Integer uniPrice) {
-        this.uniPrice = uniPrice;
     }
 
     public LocalDateTime getModifyTime() {
