@@ -20,6 +20,6 @@ public interface OrderDao extends JpaRepository<Orders, Integer> {
             "JOIN Seat s ON s.id = ss.seatId " +
             "JOIN Showtimes st ON st.id = ss.showtimeId " +
             "JOIN Movies m ON m.id = st.movieId " +
-            "WHERE orderNum = :orderNum")
-    List<Object[]> findByOrderNum(@Param("orderNum")String orderNum);
+            "WHERE orderNum = :orderNum AND p.method = :method")
+    List<Object[]> findByOrderNumAndMethod(@Param("orderNum")String orderNum, @Param("method")String method);
 }

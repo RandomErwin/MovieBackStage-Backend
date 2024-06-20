@@ -17,9 +17,9 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/getOrders/{num}")
-    public List<OrderDto> getByOrderNum(@PathVariable String num){
-        return orderService.getByOrderNum(num);
+    @GetMapping("/getOrders/{num}/{method}")
+    public List<OrderDto> getByOrderNum(@PathVariable String num, @PathVariable String method){
+        return orderService.getByOrderNum(num, method);
     }
 
     @PostMapping("/createOrder")

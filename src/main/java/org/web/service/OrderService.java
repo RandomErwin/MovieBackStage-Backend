@@ -19,8 +19,8 @@ public class OrderService {
         this.orderDao = orderDao;
     }
 
-    public List<OrderDto> getByOrderNum(String num){
-        List<Object[]> results = orderDao.findByOrderNum(num);
+    public List<OrderDto> getByOrderNum(String num, String method){
+        List<Object[]> results = orderDao.findByOrderNumAndMethod(num, method);
         List<OrderDto> orderDtos = new ArrayList<>();
 
         for(Object[] result : results){
