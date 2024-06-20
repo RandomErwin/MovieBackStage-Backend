@@ -38,9 +38,13 @@ public class PaymentService {
     }
 
     public List<PaymentDto> getByMethod(String method){
+        // JPA操作資料庫，取得join後的所有的資料放入List<Object[]> results =>  篩選出需要的欄位(屬性)逐筆放入(映射)DTO容器裡面
+        // Object[] => 容納結合多張表，具有多樣物件(含型別、屬性)
+        // PaymentDto => 作為資料傳遞的乾淨容器
         List<Object[]> results = paymentsDao.findByMethod(method);
         List<PaymentDto> paymentDtos = new ArrayList<>();
 
+        // 將逐筆 result[index] 分別放入 DTO 承接的屬性裡
         for(Object[] result : results){
             Payments payway = (Payments) result[0];
             Payments payStatus = (Payments) result[0];

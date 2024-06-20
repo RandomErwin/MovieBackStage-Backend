@@ -43,7 +43,7 @@ public class MovieService {
 
     public Result getMoviesByIsComing(){
         LocalDate today = LocalDate.now();
-        List<Movies> movies = movieDao.findMoviesByReleaseDateAfter(today);
+        List<Movies> movies = movieDao.findMoviesByReleaseDateAfterAndIsOutTheaterFalse(today);
         return new Result(200, movies);
     }
 
@@ -51,6 +51,11 @@ public class MovieService {
         LocalDate today = LocalDate.now();
         List<Movies> movies = movieDao.findMoviesByReleaseDateBeforeAndIsOutTheaterFalse(today);
         return new Result(200, movies);
+    }
+
+    public Result updateMovieById(Integer id){
+        movieDao.updateMovieById(id);
+        return new Result(200, "success");
     }
 
 //    public Result getMoviesByIsPlaying(){

@@ -17,13 +17,16 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    // 當前端發送FormData時，後端需要有與之對應的參數@RequestParam
+    // CORS藉由一堆的response header => 告訴瀏覽器有哪些東西前端具有存取權
+    // no-cors => 後端增加 header: Access-Control-Allow-Origin: *
     @PostMapping("/createMovie")
     public Result createMovie(@RequestParam String title,
                               @RequestParam String titleEnglish,
                               @RequestParam String rating,
                               @RequestParam String runtime,
                               @RequestParam String genre,
-                              @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate releaseDate,
+                              @RequestParam LocalDate releaseDate,
                               @RequestParam String director,
                               @RequestParam String synopsis,
                               @RequestParam String language,
@@ -69,6 +72,11 @@ public class MovieController {
     @GetMapping("getMovie/isPlaying")
     public Result getMoviesByIsPlaying(){
         return movieService.getMoviesByIsPlaying();
+    }
+
+    @PutMapping("updateMovie/{id}")
+    public Result updateMovieById(@PathVariable Integer id){
+        return movieService.updateMovieById(id);
     }
 
 //    @GetMapping("getMovie/isPlaying")
