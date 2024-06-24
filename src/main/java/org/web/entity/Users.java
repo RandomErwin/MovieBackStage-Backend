@@ -3,6 +3,7 @@ package org.web.entity;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Users {
@@ -14,7 +15,7 @@ public class Users {
     private String passwd;
     private String userName;
     private String nickName;
-    private Date birthday;
+    private LocalDate birthday;
     private String phone;
     private String email;
     private String photo;
@@ -25,7 +26,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(Integer id, String account, String passwd, String userName, String nickName, Date birthday, String phone, String email, String photo, String barcode, String gender, String address) {
+    public Users(Integer id, String account, String passwd, String userName, String nickName, LocalDate birthday, String phone, String email, String photo, String barcode, String gender, String address) {
         this.id = id;
         this.account = account;
         this.passwd = passwd;
@@ -80,11 +81,11 @@ public class Users {
         this.nickName = nickName;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

@@ -25,6 +25,7 @@ public class PaymentController {
 
     @PutMapping("/updatePayment")
     public Result updatePayment(@RequestBody Payments payments){
+
         return paymentService.updatePayment(payments);
     }
 
@@ -37,6 +38,11 @@ public class PaymentController {
     @GetMapping("/getPayment/{method}")
     public List<PaymentDto>getMethod(@PathVariable String  method){
         return paymentService.getByMethod(method);
+    }
+
+    @PostMapping("/createPayment/{orderNum}")
+    public Result insertRefundPaymentByOrderNum(@PathVariable String orderNum){
+        return paymentService.createRefundPaymentByOrderNum(orderNum);
     }
 
 }

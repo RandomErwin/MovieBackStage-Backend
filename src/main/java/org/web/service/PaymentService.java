@@ -1,6 +1,7 @@
 package org.web.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.web.dao.PaymentsDao;
 import org.web.dto.PaymentDto;
 import org.web.dto.Result;
@@ -9,6 +10,7 @@ import org.web.entity.Orders;
 import org.web.entity.Payments;
 import org.web.entity.Users;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +73,13 @@ public class PaymentService {
         dto.setTotalAmount(totalAmount.getTotalAmount());
         dto.setUserName(userName.getUserName());
         return  dto;
+    }
+
+    @Transactional
+    public Result createRefundPaymentByOrderNum(String orderNum){
+        LocalDateTime modifyTime = LocalDateTime.now();
+        paymentsDao.insertRefundPaymentByOrderNum(orderNum, modifyTime);
+        return new Result(200, "success");
     }
 
 }
