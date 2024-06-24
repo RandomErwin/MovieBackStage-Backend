@@ -1,11 +1,14 @@
 package org.web.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.web.entity.Bonus;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -19,7 +22,15 @@ public interface BonusDao extends JpaRepository<Bonus, Integer> {
             "JOIN Users u ON o.userId = u.id")
     List<Object[]> findBonus();
 
+    @Query("SELECT b.bonus FROM Bonus b WHERE b.paymentId = :paymentId")
+    Integer findBonusByPaymentId(@Param("paymentId") Integer paymentId);
+
+    @Modifying
+    @Transactional
+
     @Query(value = "INSERT INTO Bonus (bonus, modify_time, payment_id) " +
-            "SELECT ")
-    void insertBonusByPaymentId(@Param("method") String method);
+            "VALUES (:bonus, :modifyTime, :paymentId", nativeQuery = true)
+    void insertBonusByPaymentId(@Param("bonus") Integer bonus,
+                                @Param("modifyTime")LocalDateTime modifyTime,
+                                @Param("paymentId") Integer paymentId);
 }

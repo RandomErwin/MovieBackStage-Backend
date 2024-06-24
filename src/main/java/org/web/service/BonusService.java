@@ -70,9 +70,4 @@ public class BonusService {
         return new Result(200, list);
     }
 
-//    public Result getBonusByPhone(String phone){
-//        List<Bonus> list = bonusDao.findByPhone(phone);
-//        System.out.println(list.toString());
-//        return new Result(200, list);
-//    }
 }

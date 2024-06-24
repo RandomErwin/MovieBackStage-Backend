@@ -29,4 +29,11 @@ public interface PaymentsDao extends JpaRepository<Payments, Integer> {
             "SELECT p.order_id, p.payway, p.pay_status, p.pay_time, 'refund', :modify_time FROM Payments p " +
             "WHERE p.order_id = (SELECT o.id FROM Orders o WHERE o.order_num = :order_num)", nativeQuery = true)
     void insertRefundPaymentByOrderNum(@Param("order_num") String OrderNum, @Param("modify_time") LocalDateTime modifyTime);
+
+    // 根據最後一筆異動的payments row data => 帶入bonus paymentId
+    @Query(value = "SELECT LAST_INSERT_ID()", nativeQuery = true)
+    Integer getLastInsertedId();
+
+    @Query("SELECT o.totalAmount FROM Orders o WHERE o.orderNum = :orderNum")
+    Integer findTotalAmountByOrderNum(@Param("orderNum") String orderNum);
 }

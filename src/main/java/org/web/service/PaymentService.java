@@ -2,6 +2,7 @@ package org.web.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.web.dao.BonusDao;
 import org.web.dao.PaymentsDao;
 import org.web.dto.PaymentDto;
 import org.web.dto.Result;
@@ -18,9 +19,11 @@ import java.util.List;
 public class PaymentService {
 
     private PaymentsDao paymentsDao;
+    private BonusDao bonusDao;
 
-    public PaymentService(PaymentsDao paymentsDao) {
+    public PaymentService(PaymentsDao paymentsDao, BonusDao bonusDao) {
         this.paymentsDao = paymentsDao;
+        this.bonusDao = bonusDao;
     }
 
     public Result createPayment(Payments payments){
@@ -79,6 +82,14 @@ public class PaymentService {
     public Result createRefundPaymentByOrderNum(String orderNum){
         LocalDateTime modifyTime = LocalDateTime.now();
         paymentsDao.insertRefundPaymentByOrderNum(orderNum, modifyTime);
+
+        Integer totalAmount = paymentsDao.findTotalAmountByOrderNum(orderNum);
+        Integer paymentId = paymentsDao.getLastInsertedId();
+        Integer currentBonus = bonusDao.findBonusByPaymentId(paymentId);
+        Integer deduction = totalAmount/100;
+        Integer newBonus = currentBonus - deduction;
+        bonusDao.insertBonusByPaymentId(newBonus, modifyTime, paymentId);
+
         return new Result(200, "success");
     }
 

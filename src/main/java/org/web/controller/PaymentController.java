@@ -40,7 +40,7 @@ public class PaymentController {
         return paymentService.getByMethod(method);
     }
 
-    @PostMapping("/createPayment/{orderNum}")
+    @PostMapping("/insertPayment/{orderNum}")
     public Result insertRefundPaymentByOrderNum(@PathVariable String orderNum){
         return paymentService.createRefundPaymentByOrderNum(orderNum);
     }
