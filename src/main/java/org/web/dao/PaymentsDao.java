@@ -36,4 +36,7 @@ public interface PaymentsDao extends JpaRepository<Payments, Integer> {
 
     @Query("SELECT o.totalAmount FROM Orders o WHERE o.orderNum = :orderNum")
     Integer findTotalAmountByOrderNum(@Param("orderNum") String orderNum);
+
+//    @Query(value = "SELECT b.bonus FROM Bonus b WHERE b.paymentId ")
+//    Integer findBonusByOrderNum(@Param("orderNum") String orderNum);
 }

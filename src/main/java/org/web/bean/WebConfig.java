@@ -2,7 +2,6 @@ package org.web.bean;
 
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -26,8 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/")
-                .addPathPatterns("/movies", "/users", "/bonus",
-                                 "/payments", "/refunds", "/reviews");
+                .excludePathPatterns("/login", "/static/**");
     }
 }
 

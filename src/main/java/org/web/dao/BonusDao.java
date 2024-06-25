@@ -33,4 +33,8 @@ public interface BonusDao extends JpaRepository<Bonus, Integer> {
     void insertBonusByPaymentId(@Param("bonus") Integer bonus,
                                 @Param("modifyTime")LocalDateTime modifyTime,
                                 @Param("paymentId") Integer paymentId);
+
+    @Query(value = "SELECT b.bonus FROM Bonus b WHERE b.paymentId IN " +
+                    "(SELECT p.id FROM Payments p WHERE p.orderId = :orderId ORDER BY p.modifyTime DESC LIMIT 1 OFFSET 1)")
+    Integer findSecondLatestBonusByOrderId(@Param("orderId") Integer orderId);
 }
