@@ -65,7 +65,6 @@ public class UserController {
             // 直接返回註冊頁面
             return "register";
         }
-
         // 在 Controller層，將 userForm 轉換成 User
         Users users = userForm.convertToUser();
         userDao.save(users);

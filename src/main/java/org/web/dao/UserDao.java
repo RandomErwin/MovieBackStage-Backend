@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.web.entity.Users;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserDao extends JpaRepository<Users, Integer> {
@@ -20,6 +21,6 @@ public interface UserDao extends JpaRepository<Users, Integer> {
     List<Users> findByEmailJPQL(String email);
 
     @Query("SELECT u FROM Users u WHERE u.account =?1 AND u.passwd =?2")
-    Users findByAccountAndPasswd(String account, String passwd);
+    Optional<Users> findByAccountAndPasswd(String account, String passwd);
 
 }

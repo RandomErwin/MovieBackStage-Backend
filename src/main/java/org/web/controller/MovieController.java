@@ -1,6 +1,7 @@
 package org.web.controller;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import org.web.annotation.PermissionAnnotation;
 import org.web.dto.Result;
 import org.web.entity.Movies;
 import org.web.service.MovieService;

@@ -9,11 +9,8 @@ import org.web.entity.Brad;
 @Controller
 public class TestController {
 
-
-
     @Autowired
     private BradDao bradDao;
-
 
     @ResponseBody
     @PostMapping("/test")
@@ -27,6 +24,5 @@ public class TestController {
     public Brad getImage(@PathVariable Integer id){
         return bradDao.findById(id).get();
     }
-
 
 }
